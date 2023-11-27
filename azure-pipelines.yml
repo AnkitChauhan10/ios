@@ -5,9 +5,9 @@ pool:
   vmImage: 'macOS-latest'
 
 steps:
-- task: UseNode@2
+- task: NodeTool@0
   inputs:
-    version: '12.x'
+    versionSpec: '12.x'
     checkLatest: true
 
 - script: |
@@ -18,3 +18,13 @@ steps:
 - script: |
     ionic build
   displayName: 'Build Ionic App'
+
+# Add additional steps for testing, code signing, etc. as needed.
+
+# Example: Deploy to Firebase Hosting
+# - task: FirebaseDeploy@0
+#   inputs:
+#     action: 'deploy'
+#     projectId: '<your-firebase-project-id>'
+#     token: '$(FIREBASE_AUTH_TOKEN)'
+#   displayName: 'Deploy to Firebase Hosting'
