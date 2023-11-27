@@ -1,0 +1,20 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'macOS-latest'
+
+steps:
+- task: UseNode@2
+  inputs:
+    version: '12.x'
+    checkLatest: true
+
+- script: |
+    npm install -g @ionic/cli
+    npm install
+  displayName: 'Install dependencies'
+
+- script: |
+    ionic build
+  displayName: 'Build Ionic App'
